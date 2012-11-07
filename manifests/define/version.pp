@@ -10,11 +10,13 @@ define rvm::define::version (
     path    => '/usr/local/rvm/bin:/bin:/sbin:/usr/bin:/usr/sbin',
   }
 
+  $rvm_source = "source /usr/local/rvm/scripts/rvm"
+
   # Install or uninstall RVM Ruby Version
   if $ensure == 'present' {
     exec { "install-ruby-${name}":
-      command => "/usr/local/rvm/bin/rvm install ${name}",
-      unless  => "rvm list | grep ${name}",
+      command => "bash -c '${rvm_source} ; rvm install ${name}",
+      unless  => "bash -c '${rvm_source} ; rvm list | grep ${name}'",
       timeout => '0',
       require => Class['rvm'],
     }
