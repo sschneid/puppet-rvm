@@ -1,7 +1,7 @@
 class rvm::packages::debian {
  
-  case $lsbcodename {
-    wheezy: {
+  case $operatingsystemrelease {
+    'wheezy/sid': {
       $libreadline_pkg = 'libreadline-gplv2-dev'
     }
     default: {
