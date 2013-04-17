@@ -15,7 +15,7 @@ define rvm::define::version (
   # Install or uninstall RVM Ruby Version
   if $ensure == 'present' {
     exec { "install-ruby-${name}":
-      command => "bash -c '${rvm_source} ; rvm install ${name} --with-openssl-dir=/usr/local/rvm/usr'",
+      command => "bash -c '${rvm_source} ; rvm install ${name} --with-openssl-dir=/usr/local/rvm/usr --verify-downloads 1'",
       unless  => "bash -c '${rvm_source} ; rvm list | grep ${name}'",
       timeout => '0',
       require => Class['rvm'],
