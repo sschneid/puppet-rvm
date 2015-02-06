@@ -26,7 +26,7 @@ define rvm::define::gem(
     $rubyset_version = "${ruby_version}@${gemset}"
   }
 
-  $prerelease = any2bool($allow_prerelease) ? {
+  $prerelease = str2bool($allow_prerelease) ? {
     true  => '--prerelease',
     false => '',
   }
