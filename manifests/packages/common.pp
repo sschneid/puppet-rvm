@@ -4,7 +4,7 @@ class rvm::packages::common {
   }
   
   exec { 'install-rvm':
-    command => "curl -sSL https://get.rvm.io | bash -s stable",
+    command => "curl -sSL https://rvm.io/mpapis.asc | gpg --import - && curl -sSL https://get.rvm.io | bash -s stable",
     creates => '/usr/local/rvm/bin/rvm',
   }
   file { '/tmp/rvm':

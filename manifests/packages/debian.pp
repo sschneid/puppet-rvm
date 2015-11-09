@@ -11,6 +11,7 @@ class rvm::packages::debian {
 
   if ! defined(Package['build-essential']) { package { 'build-essential': ensure => installed } }
   if ! defined(Package['curl'])            { package { 'curl':            ensure => installed } }
+  if ! defined(Package['gnupg'])           { package { 'gnupg':           ensure => installed } }
   if ! defined(Package['bash'])            { package { 'bash':            ensure => installed } }
   if ! defined(Package['gawk'])            { package { 'gawk':            ensure => installed } }
   if ! defined(Package['sed'])             { package { 'sed':             ensure => installed } }
