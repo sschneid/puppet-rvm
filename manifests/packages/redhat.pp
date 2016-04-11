@@ -10,5 +10,8 @@ class rvm::packages::redhat {
   }
   
   # Realize packages list. 
-  Package<| tag == 'rvm-packages' |>
+  each($package_list) |$package_name| {
+    if ! defined(Package[$package_name]) {
+      package { $package_name: ensure => latest; } }
+  }
 }
